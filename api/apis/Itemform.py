@@ -1,12 +1,12 @@
 from django.http import JsonResponse
 from rest_framework.views import APIView
-
+from rest_framework.authentication import BasicAuthentication,TokenAuthentication
+from rest_framework.permissions import AllowAny,IsAuthenticated
 from api.models import items
 
 
 class Itemform(APIView):
-
-
+    permission_classes = [AllowAny]
     def post(self, request):
 
         name = request.POST["name"]
