@@ -18,7 +18,7 @@ class Itemform(APIView):
         barcode_type = request.POST["barcode_type"]
 
 
-        item = items(name=name, price=price, manufacturer=manufacturer, description=description, category=category, barcode=barcode, barcode_type=barcode_type)
+        item = items(name=name, price=price, manufacturer=manufacturer, description=description, category=category, barcodedata=barcode, barcode_type=barcode_type)
         item.save()
 
 
