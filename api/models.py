@@ -11,7 +11,6 @@ class items(models.Model):
     manufacturer = models.CharField(max_length=100)
     category = models.CharField(max_length=100)
     description = models.CharField(max_length=100)
-    image = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     barcode_type = models.CharField(max_length=100)
 
