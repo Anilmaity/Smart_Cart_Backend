@@ -17,11 +17,12 @@ class Itemform(APIView):
         barcode = request.POST["barcode"]
         barcode_type = request.POST["barcode_type"]
 
-
-        item = items(name=name, price=price, manufacturer=manufacturer, description=description, category=category, barcodedata=barcode, barcode_type=barcode_type)
-        item.save()
-
-
-        response = {'Status': 'Item added sucessfully',
-                    'item_no': str(item.id)},
-        return JsonResponse(response)
+        item = items.objects.all().filter(barcodedata=barcode, barcode_type=barcode_type).exists()
+        if item:
+            return JsonResponse({"error": "Item already exists"})
+        else:
+            item = items(name=name, price=price, manufacturer=manufacturer, description=description, category=category, barcodedata=barcode, barcode_type=barcode_type)
+            item.save()
+            response = {'Status': 'Item added sucessfully',
+                        'item_no': str(item.id)},
+            return JsonResponse(response, safe=False)
