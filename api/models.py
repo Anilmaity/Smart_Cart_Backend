@@ -13,6 +13,7 @@ class items(models.Model):
     description = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     barcode_type = models.CharField(max_length=100)
+    weight = models.FloatField(default=0)
 
     def __str__(self):
         return str(self.id)
