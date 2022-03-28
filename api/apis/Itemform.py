@@ -6,9 +6,10 @@ from api.models import items
 
 
 class Itemform(APIView):
+
     permission_classes = [AllowAny]
     def post(self, request):
-
+        print(request.data)
         name = request.POST["name"]
         price = request.POST["price"]
         manufacturer = request.POST["manufacturer"]
@@ -16,12 +17,15 @@ class Itemform(APIView):
         category = request.POST["category"]
         barcode = request.POST["barcode"]
         barcode_type = request.POST["barcode_type"]
+        weight = request.POST["weight"]
+
 
         item = items.objects.all().filter(barcodedata=barcode, barcode_type=barcode_type).exists()
         if item:
-            return JsonResponse({"error": "Item already exists"})
+            response = {'Status': 'Item already exists'},
+            return JsonResponse(response, safe=False)
         else:
-            item = items(name=name, price=price, manufacturer=manufacturer, description=description, category=category, barcodedata=barcode, barcode_type=barcode_type)
+            item = items(name=name,weight=weight, price=price, manufacturer=manufacturer, description=description, category=category, barcodedata=barcode, barcode_type=barcode_type)
             item.save()
             response = {'Status': 'Item added sucessfully',
                         'item_no': str(item.id)},
