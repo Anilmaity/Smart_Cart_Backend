@@ -18,6 +18,7 @@ class Itemform(APIView):
         barcode = request.POST["barcode"]
         barcode_type = request.POST["barcode_type"]
         weight = request.POST["weight"]
+        discount = request.POST["discount"]
 
 
         item = items.objects.all().filter(barcodedata=barcode, barcode_type=barcode_type).exists()
@@ -25,7 +26,7 @@ class Itemform(APIView):
             response = {'Status': 'Item already exists'},
             return JsonResponse(response, safe=False)
         else:
-            item = items(name=name,weight=weight, price=price, manufacturer=manufacturer, description=description, category=category, barcodedata=barcode, barcode_type=barcode_type)
+            item = items(name=name,weight=weight,discount=discount, price=price, manufacturer=manufacturer, description=description, category=category, barcodedata=barcode, barcode_type=barcode_type)
             item.save()
             response = {'Status': 'Item added sucessfully',
                         'item_no': str(item.id)},
