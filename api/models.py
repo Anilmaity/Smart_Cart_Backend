@@ -28,8 +28,8 @@ class Cart(models.Model):
     cart_token = models.CharField(max_length=100)
     last_online = models.DateTimeField(auto_now_add=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    cart_id = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
+    cart_id = models.CharField(max_length=100,default='')
+    password = models.CharField(max_length=100,default='')
 
     def __str__(self):
         return str(self.id)

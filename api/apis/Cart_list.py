@@ -4,7 +4,7 @@ from django.http import JsonResponse, HttpResponse
 from rest_framework.permissions import AllowAny
 
 from api.models import Cart
-from api.serilizers import itemsSerializer
+from api.serilizers import itemsSerializer,CartSerializer
 
 import datetime
 
@@ -17,7 +17,7 @@ class Cart_list(APIView):
     def get(self, request):
         print("get")
         cart = Cart.objects.all()
-        ser = itemsSerializer(cart,many=True)
+        ser = CartSerializer(cart,many=True)
         if (request.method == "GET"):
             print(ser.data)
             return JsonResponse(ser.data, safe=False)
