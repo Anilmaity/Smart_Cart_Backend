@@ -19,6 +19,8 @@ class Cart_login(APIView):
 
         if cart:
             cart = Cart.objects.all().filter(cart_id=cart_id)
+            print(cart)
+
             if (cart.in_use == True):
                 response = {'Status': 'Cart is in use'}
                 return JsonResponse(response, safe=False)
