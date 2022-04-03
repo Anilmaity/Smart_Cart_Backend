@@ -19,17 +19,11 @@ class Cart_login(APIView):
 
 
         if cart:
-
             cart = Cart.objects.all().filter(cart_id=cart_id)
-
-            if (cart.in_use == True):
-                response = {'Status': 'Cart is in use'}
-                return JsonResponse(response, safe=False)
-            else:
-                cart.in_use = True
-                cart.save()
-                response = {'Status': 'Login successful'}
-                return JsonResponse(response, safe=False)
+            cart.in_use = False
+            cart.save()
+            response = {'Status': 'lognut successful'}
+            return JsonResponse(response, safe=False)
         else:
-            response = {'Status': 'Login failed'}
+            response = {'Status': 'logut failed'}
             return JsonResponse(response, safe=False)
