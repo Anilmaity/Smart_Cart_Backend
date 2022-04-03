@@ -6,20 +6,18 @@ from api.models import Cart
 
 
 class Cart_login(APIView):
-
     permission_classes = [AllowAny]
+
     def post(self, request):
         print(request.data)
         cart_id = request.POST["cart_token"]
-
-
 
         cart = Cart.objects.all().filter(cart_id=cart_id).exists()
         print(cart)
 
         if cart:
-            cart = Cart.objects.all().filter(cart_id=cart_id)
-            print(cart)
+            cart = Cart.objects.get(cart_id=cart_id)
+            print(cart.in_use)
 
             if (cart.in_use == True):
                 response = {'Status': 'Cart is in use'}

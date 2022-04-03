@@ -20,8 +20,7 @@ class Cart_login(APIView):
 
 
         if cart:
-            cart = Cart.objects.all().filter(cart_id=cart_id)
-            print(cart)
+            cart = Cart.objects.get(cart_id=cart_id)
             cart.in_use = False
             cart.save()
             response = {'Status': 'lognut successful'}
