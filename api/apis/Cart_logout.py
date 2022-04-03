@@ -23,8 +23,8 @@ class Cart_logout(APIView):
             cart = Cart.objects.get(cart_id=cart_id)
             cart.in_use = False
             cart.save()
-            response = {'Status': 'lognut successful'}
+            response = {'Status': 'logout successful'}
             return JsonResponse(response, safe=False)
         else:
-            response = {'Status': 'logut failed'}
+            response = {'Status': 'logout failed'}
             return JsonResponse(response, safe=False)
