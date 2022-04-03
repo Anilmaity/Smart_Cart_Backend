@@ -15,13 +15,10 @@ class Cart_login(APIView):
 
 
         cart = Cart.objects.all().filter(cart_id=cart_id).exists()
-
-
+        print(cart)
 
         if cart:
-
             cart = Cart.objects.all().filter(cart_id=cart_id)
-
             if (cart.in_use == True):
                 response = {'Status': 'Cart is in use'}
                 return JsonResponse(response, safe=False)

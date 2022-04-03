@@ -16,6 +16,7 @@ class Cart_login(APIView):
 
         cart = Cart.objects.all().filter(cart_id=cart_id).exists()
 
+        print(cart)
 
 
         if cart:
