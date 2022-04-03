@@ -31,6 +31,7 @@ class Cart(models.Model):
     cart_id = models.CharField(max_length=100,default='')
     password = models.CharField(max_length=100,default='')
 
+
     def __str__(self):
         return str(self.id)
 

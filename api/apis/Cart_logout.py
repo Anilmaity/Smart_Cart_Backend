@@ -5,7 +5,7 @@ from rest_framework.permissions import AllowAny,IsAuthenticated
 from api.models import Cart
 
 
-class Cart_login(APIView):
+class Cart_logout(APIView):
 
     permission_classes = [AllowAny]
     def post(self, request):

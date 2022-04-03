@@ -8,6 +8,7 @@ from api.apis import Itemform
 from api.apis import Cart_list
 from api.apis import CartForm
 from api.apis import Cart_login
+from api.apis import Cart_logout
 
 
 
@@ -19,5 +20,6 @@ urlpatterns = [
     path('Cart_list/', Cart_list.Cart_list.as_view(), name='Cart_list'),
     path('Cart_login/', Cart_login.Cart_login.as_view(), name='Cart_login'),
     path('Cart_form/', CartForm.Cart_form.as_view(), name='Cart_form'),
+    path('Cart_logout/', Cart_logout.Cart_logout.as_view(), name='Cart_logout'),
 
               ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
