@@ -30,6 +30,11 @@ class Cart(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     cart_id = models.CharField(max_length=100,default='')
     password = models.CharField(max_length=100,default='')
+    longitude = models.FloatField(default=22.560089)
+    latitude = models.FloatField(default=73.919784)
+
+
+
 
 
     def __str__(self):
