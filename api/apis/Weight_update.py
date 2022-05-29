@@ -6,7 +6,7 @@ from rest_framework.permissions import AllowAny,IsAuthenticated
 from api.models import Cart
 
 
-class location_Update(APIView):
+class Weight_Update(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):

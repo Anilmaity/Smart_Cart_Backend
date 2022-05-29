@@ -9,6 +9,7 @@ from api.apis import Cart_list
 from api.apis import CartForm
 from api.apis import Cart_login
 from api.apis import Cart_logout
+from api.apis import Weight_update
 from api.apis import Updated_cart__location
 
 
@@ -17,6 +18,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('items/', itemlist.itemslist.as_view(), name='itemlist'),
     path('Itemform/', Itemform.Itemform.as_view(), name='itemform'),
+    path('Weight_update/', Weight_update.Weight_Update.as_view(), name='Weight_Update'),
     path('Cart_list/', Cart_list.Cart_list.as_view(), name='Cart_list'),
     path('Cart_login/', Cart_login.Cart_login.as_view(), name='Cart_login'),
     path('Cart_form/', CartForm.Cart_form.as_view(), name='Cart_form'),
